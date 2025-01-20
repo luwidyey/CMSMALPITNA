@@ -8,7 +8,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'teacher') {
 }
 
 // Database connection
-$host = "localhost";  
+$host = "localhost";
 $user = "root";
 $password = "";
 $dbname = "signup_db";
@@ -25,8 +25,8 @@ $result = $conn->query($sql);
 $user = $result->fetch_assoc();
 
 // Fallback to default profile picture if none is set
-$profile_picture = !empty($user['profile_picture']) && file_exists($user['profile_picture']) 
-    ? htmlspecialchars($user['profile_picture']) 
+$profile_picture = !empty($user['profile_picture']) && file_exists($user['profile_picture'])
+    ? htmlspecialchars($user['profile_picture'])
     : 'default.png';
 
 // Store the first name in the session for display
@@ -35,6 +35,7 @@ $_SESSION['first_name'] = $user['first_name'];
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,7 +44,10 @@ $_SESSION['first_name'] = $user['first_name'];
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="teacher-dashboard.css">
 </head>
+
 <body>
+    <div id="date-time"></div>
+
     <!-- Navbar -->
     <div class="navbar">
         <div class="navbar-left">
@@ -53,7 +57,8 @@ $_SESSION['first_name'] = $user['first_name'];
         <div class="navbar-right">
             <span class="material-icons profile-icon">account_circle</span>
             <div class="dropdown">
-                <button class="dropbtn"><?php echo htmlspecialchars($_SESSION['first_name']); ?> <i class="material-icons">arrow_drop_down</i></button>
+                <button class="dropbtn"><?php echo htmlspecialchars($_SESSION['first_name']); ?> <i
+                        class="material-icons">arrow_drop_down</i></button>
                 <div class="dropdown-content">
                     <a href="myaccountteacher.php">My Account</a>
                     <a href="logout-teacher.php">Logout</a>
@@ -66,12 +71,15 @@ $_SESSION['first_name'] = $user['first_name'];
     <div class="sidebar">
         <div class="sidebar-header">
             <span class="material-icons profile-icon">account_circle</span>
-            <p><?php echo htmlspecialchars($_SESSION['first_name']); ?></p>    
+            <p><?php echo htmlspecialchars($_SESSION['first_name']); ?></p>
         </div>
         <ul>
-            <li><a href="#" data-content="dashboard"><i class="material-icons">dashboard</i> <span>Dashboard</span></a></li>
-            <li><a href="#" data-content="syllabi"><i class="material-icons">assignment</i> <span>Syllabus</span></a></li>
-            <li><a href="#" data-content="assessment"><i class="material-icons">people</i> <span>Assessment</span></a></li>
+            <li><a href="#" data-content="dashboard"><i class="material-icons">dashboard</i> <span>Dashboard</span></a>
+            </li>
+            <li><a href="#" data-content="syllabi"><i class="material-icons">assignment</i> <span>Syllabus</span></a>
+            </li>
+            <li><a href="#" data-content="assessment"><i class="material-icons">people</i> <span>Assessment</span></a>
+            </li>
             <li><a href="#" data-content="message"><i class="material-icons">message</i> <span>Message</span></a></li>
         </ul>
     </div>
@@ -152,16 +160,16 @@ $_SESSION['first_name'] = $user['first_name'];
             const dateElement = document.getElementById('current-date');
             const now = new Date();
 
-            const options = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric', 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit' 
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
             };
-            
+
             dateElement.textContent = now.toLocaleDateString('en-US', options);
         }
 
@@ -174,4 +182,5 @@ $_SESSION['first_name'] = $user['first_name'];
 
     <script src="teacher-dashboard.js"></script>
 </body>
+
 </html>

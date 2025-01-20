@@ -107,37 +107,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Insert data into the syllabus table
     $sql = "INSERT INTO syllabus (
-        program, semester, academic_year, core_values, course_title, course_code, 
-        course_description, credit_units, goals, objectives_dept, pre_requisites, policies, `references`, 
-        section, schedule, revision_number, revision_date, implementation_date, revision_highlights, program_objective, resources_needed, grading_system, course_requirements, week_no, ilo, topic, tla, delivery_mode, oba, due_date,
-        text_1, text_2, text_3, text_4, text_5, text_6,
-        option1_3, option2_3, option3_3, option4_3, option5_3,
-        option1_4, option2_4, option3_4, option4_4, option5_4,
-        option1_5, option2_5, option3_5, option4_5, option5_5,
-        option1_6, option2_6, option3_6, option4_6, option5_6
-    ) VALUES (
-        '$programValue', '$semester', '$academicYear', '$coreValues', '$courseTitle', '$courseCode',
-        '$courseDescription', '$creditUnits', '$goal', '$objectivesDept', '$preRequisites', '$policies', '$references', 
-        '$section', '$schedule', '$revisionNumber', '$revisionDate', '$implementationDate', '$revisionHighlights', '$programObjective', '$resourcesNeeded', '$gradingSystem', '$courseRequirements', '$weekNo', '$ilo', '$topic', '$tla', '$deliveryMode', '$oba', '$dueDate', 
-        '$text_1', '$text_2','$text_3', '$text_4', '$text_5', '$text_6',
-        '$option1_3', '$option2_3', '$option3_3', '$option4_3', '$option5_3',
-        '$option1_4', '$option2_4', '$option3_4', '$option4_4', '$option5_4',
-        '$option1_5', '$option2_5', '$option3_5', '$option4_5', '$option5_5',
-        '$option1_6', '$option2_6', '$option3_6', '$option4_6', '$option5_6'
-    )";
+            program, semester, academic_year, core_values, course_title, course_code, 
+            course_description, credit_units, goals, objectives_dept, pre_requisites, policies, `references`, 
+            section, schedule, revision_number, revision_date, implementation_date, revision_highlights, program_objective, resources_needed, grading_system, course_requirements, week_no, ilo, topic, tla, delivery_mode, oba, due_date,
+            text_1, text_2, text_3, text_4, text_5, text_6,
+            option1_3, option2_3, option3_3, option4_3, option5_3,
+            option1_4, option2_4, option3_4, option4_4, option5_4,
+            option1_5, option2_5, option3_5, option4_5, option5_5,
+            option1_6, option2_6, option3_6, option4_6, option5_6
+        ) VALUES (
+            '$programValue', '$semester', '$academicYear', '$coreValues', '$courseTitle', '$courseCode',
+            '$courseDescription', '$creditUnits', '$goal', '$objectivesDept', '$preRequisites', '$policies', '$references', 
+            '$section', '$schedule', '$revisionNumber', '$revisionDate', '$implementationDate', '$revisionHighlights', '$programObjective', '$resourcesNeeded', '$gradingSystem', '$courseRequirements', '$weekNo', '$ilo', '$topic', '$tla', '$deliveryMode', '$oba', '$dueDate', 
+            '$text_1', '$text_2','$text_3', '$text_4', '$text_5', '$text_6',
+            '$option1_3', '$option2_3', '$option3_3', '$option4_3', '$option5_3',
+            '$option1_4', '$option2_4', '$option3_4', '$option4_4', '$option5_4',
+            '$option1_5', '$option2_5', '$option3_5', '$option4_5', '$option5_5',
+            '$option1_6', '$option2_6', '$option3_6', '$option4_6', '$option5_6'
+        )";
 
     if ($conn->query($sql) === TRUE) {
         $message = "Syllabus added successfully!";
         echo "<script>
-            setTimeout(function() {
-                window.location.href = 'teacher-dashboard.php';
-            }, 3000);
-        </script>";
+                setTimeout(function() {
+                    window.location.href = 'teacher-dashboard.php';
+                }, 3000);
+            </script>";
     } else {
         $message = "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 
 // Close the connection
-$conn->close();
-?>

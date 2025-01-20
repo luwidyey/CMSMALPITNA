@@ -79,6 +79,23 @@ const contentData = {
                 </div>
             </div>
         </div>
+         <!-- Custom Table -->
+        <div class="custom-table-container">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Course Title</th>
+                        <th>Semester</th>
+                        <th>Academic Year</th>
+                        <th>Prepared Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                </tbody>
+            </table>
+        </div>
         <!-- Modal Structure for Create Syllabus -->
         <div id="createSyllabusModal" class="modal" style="display: none;">
   <div class="modal-content">
@@ -441,3 +458,45 @@ setInterval(updateDateTime, 1000);
 
 // Initialize the date when the page loads
 document.addEventListener('DOMContentLoaded', updateDateTime);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const tableBody = document.querySelector(".custom-table tbody");
+
+    // Fetch data from the API
+    fetch("getSyllabus.php")
+        .then((response) => {
+            console.log("Response status:", response.status); // Log response status
+            return response.json();
+        })
+        .then((data) => {
+            console.log("Fetched data:", data); // Log the fetched data
+            tableBody.innerHTML = ""; // Clear existing rows
+            if (data.length > 0) {
+                data.forEach((row) => {
+                    const tableRow = `
+                        <tr>
+                            <td>${row.course_code}</td>
+                            <td>${row.course_title}</td>
+                            <td>${row.semester}</td>
+                            <td>${row.academic_year}</td>
+                            <td>${row.revision_date}</td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += tableRow;
+                });
+            } else {
+                tableBody.innerHTML = `<tr><td colspan="5">No data available</td></tr>`;
+            }
+        })
+        .catch((error) => {
+            console.error("Error fetching syllabus data:", error);
+            tableBody.innerHTML = `<tr><td colspan="5">Failed to load data</td></tr>`;
+        });
+});
+
+const tableBody = document.querySelector(".custom-table tbody");
+console.log("Table body found:", tableBody);
+
+if (!tableBody) {
+    console.error("Table body not found! Check your HTML structure.");
+}
