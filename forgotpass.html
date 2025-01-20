@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="forgotpass.css">
+</head>
+<body>
+    <div class="face">
+        <div class="eyes">
+            <div class="eye"></div>
+            <div class="eye"></div>
+        </div>
+    </div>
+
+    <div class="back-button">
+        <a href="#" id="back-link">
+          <i class="material-icons">arrow_back</i>
+          Back
+        </a>
+    </div>
+    <div class="forgot-password-container">
+        <h1>Forgot Password</h1>
+        <p>Enter your email address to reset your password.</p>
+        <form id="forgot-password-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <span id="error-message" class="error-message"></span>
+            <button type="submit">Reset Password</button>
+        </form>
+    </div>
+    <script>
+        document.querySelector("body").addEventListener("mousemove", eyeball);
+
+function eyeball() {
+    'use strict';
+    var eye = document.querySelectorAll(".eye");
+    eye.forEach(function (eye) {
+        let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2)
+        let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+        let radian = Math.atan2(event.pageX - x, event.pageY - y);
+        let rot = (radian * (180 / Math.PI) * -1) + 270;
+        eye.style.transform  = "rotate("+ rot +"deg)"
+    })
+}
+        // JavaScript to handle the back button redirection
+        const urlParams = new URLSearchParams(window.location.search);
+        const sourcePage = urlParams.get('source'); // Get the 'source' parameter
+        const backLink = document.getElementById('back-link');
+
+        // If source parameter exists, set the back button link
+        if (sourcePage) {
+            backLink.href = sourcePage;
+        } else {
+            // Default to a fallback page if no source is provided
+            backLink.href = 'login-admin.html';
+        }
+    </script>
+</body>
+</html>

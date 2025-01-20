@@ -1,0 +1,480 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #38a169;
+}
+
+h1, h2, p {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Navbar */
+.navbar {
+    background-color: white;
+    color: black;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+    border-radius: 5px;
+}
+
+.navbar-left h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-left .core {
+    color: #3cd070;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: black;
+}
+
+.profile-icon {
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown .dropbtn {
+    background: none;
+    color: black;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: lightgreen;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 100vh;
+    background-color: white;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+.sidebar:hover {
+    width: 250px;
+}
+
+.sidebar ul {
+    margin-top: 80px;
+    width: 100%;
+}
+
+.sidebar ul li {
+    width: 100%;
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: 18px;
+    padding: 15px 20px;
+    text-align: left;
+    transition: background-color 0.3s, padding-left 0.3s;
+    white-space: nowrap;
+}
+
+.sidebar ul li.active a {
+    background-color: lightgreen;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    background-color: lightgreen;
+    padding-left: 30px;
+}
+
+.sidebar ul li a i {
+    margin-right: 20px;
+    font-size: 24px;
+    color: black;
+    min-width: 30px;
+}
+
+.sidebar ul li a span {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sidebar:hover ul li a span {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar-header {
+    margin-top: 80px;
+    color: black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-header .profile-icon {
+    font-size: 50px;
+}
+
+/* Content */
+.content {
+    margin-left: 300px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    min-height: calc(100vh - 90px);
+    margin-top: 20px;
+    margin-right: auto;
+}
+
+.content-header {
+    margin-bottom: 20px;
+}
+
+.content-body {
+    color: #555;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.welcome-section {
+    width: 80%; /* Adjust width as needed */
+    display: flex;
+    align-items: center; /* Aligns text and image vertically */
+    justify-content: space-between; /* Space between text and image */
+    background: linear-gradient(135deg, #64b96a, lightgreen); /* Gradient background */
+    border-radius: 30px; /* Rounded corners */
+    padding: 60px 20px; /* Padding inside the section */
+    margin: 20px auto; /* Center horizontally */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(72, 161, 217, 0.5); /* Add a shadow and a subtle glow */
+    border: 2px solid transparent; /* For gradient border effect */
+    background-clip: padding-box, border-box;
+    position: relative;
+}
+
+.welcome-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: 30px;
+    background: linear-gradient(135deg, lightgreen, #64b96a); /* Gradient border effect */
+    filter: blur(10px);
+    opacity: 0.8;
+}
+
+.welcome-section:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.welcome-text {
+    max-width: 65%; /* Prevents the text from taking too much space */
+}
+
+.welcome-text h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.welcome-text h1 {
+    font-size: 28px;
+    color: #fff; /* Change text color to white for contrast */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.welcome-text p {
+    font-size: 14px;
+    color: #f1f1f1; /* Light gray text for better readability */
+}
+
+.welcome-image {
+    height: 250px; /* Bigger size for the image */
+    width: 250px;
+    border-radius: 50%; /* Makes the image circular */
+    background-color: white; /* Optional white background */
+    overflow: hidden; /* Ensures the image stays inside the circle */
+    border: 5px solid white; /* White border around the image */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    flex-shrink: 0; /* Prevents the image from shrinking */
+    position: absolute; /* Allow it to be positioned outside the green box */
+    right: -40px; /* Move it slightly outside the green box */
+    top: 50%; /* Align it vertically */
+    transform: translateY(-50%); /* Center it relative to the green box */
+}
+
+.welcome-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image scales correctly */
+}
+
+/* Enrolled Courses Section */
+.enrolled-courses {
+    width: 100%;
+    max-width: 800px; /* Limit max width for better focus */
+    margin: 20px auto;
+    padding: 10px;
+    background: #fafafa; /* Light background for contrast */
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Enrolled Courses Section */
+.enrolled-courses {
+    flex: 2;
+}
+
+.enrolled-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.enrolled-header h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.enrolled-header .see-all {
+    font-size: 0.9em;
+    color: #6b46c1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.course-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.course-card {
+    background: linear-gradient(135deg, #64b96a, lightgreen);
+    border: 1px solid #e0d7fb;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.course-card:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.course-icon {
+    background: #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.course-icon i {
+    font-size: 30px;
+    color: lightgreen;
+}
+
+.course-content h4 {
+    font-size: 1em;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.view-button {
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+}
+.view-button:hover {
+    background:lightblue;
+}
+
+
+/* Daily Notice Section */
+.daily-notice {
+    flex: 1;
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.notice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.notice-header h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.notice-header .see-all {
+    font-size: 0.9em;
+    color: #6b46c1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.notice-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.notice-item h4 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.notice-item p {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.notice-item a {
+    font-size: 0.9em;
+    color: #6b46c1;
+    text-decoration: none;
+}
+
+/* Style the message section */
+#user-list-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#user-list {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.message-content {
+    text-align: center;
+    margin-top: 50px;
+}
+.welcome-message h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.welcome-message p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+.message-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.message-button:hover {
+    background-color: #0056b3;
+}
+
+

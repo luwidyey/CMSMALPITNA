@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link rel="stylesheet" href="myacount.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Account</h1>
+
+        <div class="details-container">
+            <!-- Left Side: Current Details -->
+            <div class="current-details">
+                <h2>Current Details</h2>
+                <p><strong>Username:</strong> currentUsername</p>
+                <p><strong>First Name:</strong> currentFirstName</p>
+                <p><strong>Last Name:</strong> currentLastName</p>
+                <p><strong>Email:</strong> currentEmail@example.com</p>
+            </div>
+
+            <!-- Right Side: Update Form -->
+            <div class="update-form">
+                <h2>Update Details</h2>
+                <form action="myaccount.php" method="POST" id="account-form">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" value="currentUsername" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" id="first_name" name="first_name" value="currentFirstName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" id="last_name" name="last_name" value="currentLastName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" value="currentEmail@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password">
+                        <small>Leave blank if you do not want to change your password.</small>
+                    </div>
+
+                    <button type="submit">Update Details</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="student-dashboard.php">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

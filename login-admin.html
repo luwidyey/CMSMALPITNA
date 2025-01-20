@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="login-admin.css">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector("form");
+            const usernameField = document.getElementById("username");
+            const passwordField = document.getElementById("password");
+    
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent form submission
+                
+                const username = usernameField.value.trim();
+                const password = passwordField.value.trim();
+    
+                // Default credentials
+                const defaultUsername = "admin";
+                const defaultPassword = "admin";
+    
+                if (username === defaultUsername && password === defaultPassword) {
+                    alert("Login successful!");
+                    // Redirect to dashboard-student.html
+                    window.location.href = "admin-dashboard.html";
+                } else {
+                    alert("Incorrect username or password. Please try again.");
+                    usernameField.value = ""; // Clear the username field
+                    passwordField.value = ""; // Clear the password field
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div class="back-button">
+        <a href="login-option.html">
+          <i class="material-icons">arrow_back</i>
+          Back
+        </a>
+      </div>
+    <div class="container">
+        <div class="left-panel">
+            <span class="material-icons admin-icon">account_circle</span>
+            <br>
+            <h1>Welcome back Admin!</h1>
+        </div>
+        <div class="right-panel">
+            <h2>Admin Login</h2>
+            <p>Welcome back! Please login to your account.</p>
+            <form>
+                <label for="username">User Name</label>
+                <input type="text" id="username" placeholder="username" id="username" required>
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="********" id="password"required>
+                
+                <div class="options">
+                    <label>
+                        <input type="checkbox"> Remember Me
+                    </label>
+                    <a href="forgotpass.html?source=login-admin.html">Forgot Password?</a>
+                </div>
+                
+                <button type="submit">Login</button>
+            </form>
+        
+        </div>
+    </div>
+</body>
+</html>

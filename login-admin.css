@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .back-button a {
+    text-decoration: none;
+    color: #32CD32;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .back-button a:hover {
+    text-decoration: underline;
+  }
+  
+.container {
+    display: flex;
+    max-width: 1200px; /* Increased width */
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.left-panel {
+    flex: 1;
+    background: linear-gradient(135deg, #38a169, #90EE90); /* Green gradient */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    position: relative;
+}
+
+
+.admin-icon {
+    font-size: 250px; /* Size of the admin icon */
+    top: 20px; /* Space from the top of the panel */
+    color: white;
+    margin-bottom: 20px;
+}
+
+.left-panel h1 {
+    font-size: 50px; /* Increased font size */
+    font-weight: bold;
+    text-align: center;
+}
+
+.right-panel {
+    flex: 1;
+    padding: 60px; /* Increased padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-panel h2 {
+    font-size: 36px; /* Increased font size */
+    margin-bottom: 15px;
+}
+
+.right-panel p {
+    font-size: 18px; /* Larger text */
+    margin-bottom: 30px; /* Increased margin */
+    color: #555;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 18px; /* Larger labels */
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input {
+    font-size: 18px; /* Larger input fields */
+    margin-bottom: 20px; /* Increased spacing */
+    padding: 15px; /* Increased padding */
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Slightly rounder corners */
+}
+
+input:focus {
+    outline: none;
+    border-color: #38a169;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px; /* Increased margin */
+}
+
+.options a {
+    font-size: 16px; /* Increased text size */
+    text-decoration: none;
+    color: #a855f7;
+}
+
+button {
+    padding: 15px 25px; /* Larger button size */
+    font-size: 18px; /* Larger button text */
+    color: white;
+    background: #90EE90;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background:#32CD32;
+}
+
+p a {
+    font-size: 16px; /* Larger link text */
+    color: #a855f7;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}

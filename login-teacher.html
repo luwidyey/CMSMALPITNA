@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcademiCore</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="login-admin.css">
+</head>
+<body>
+    <div class="back-button">
+        <a href="login-option.html">
+          <i class="material-icons">arrow_back</i>
+          Back
+        </a>
+      </div>
+    <div class="container">
+        <div class="left-panel">
+            <span class="material-icons admin-icon">group</span>
+            <br>
+            <h1>Welcome back, Instructor!</h1>
+        </div>
+        <div class="right-panel">
+            <h2>Instructor Login</h2>
+            <p>Welcome back! Please login to your account.</p>
+            <form action="login.php" method="post">
+                <label for="username">User Name</label>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="**" required>
+
+                <input type="hidden" name="role" value="teacher"> <!-- Specify role -->
+
+                <div class="options">
+                    <label>
+                        <input type="checkbox"> Remember Me
+                    </label>
+                    <a href="forgotpass.html?source=login-teacher.html">Forgot Password?</a>
+                </div>
+
+                <button type="submit">Login</button>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>
