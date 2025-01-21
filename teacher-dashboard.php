@@ -178,6 +178,8 @@ $_SESSION['first_name'] = $user['first_name'];
 
         // Initialize the date when the page loads
         document.addEventListener('DOMContentLoaded', updateDateTime);
+
+
     </script>
 
     <script src="teacher-dashboard.js"></script>
