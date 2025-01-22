@@ -9,54 +9,19 @@ const contentData = {
                 <div class="welcome-text">
                     <h3 id="current-date"></h3>
                     <h1>Welcome Back, Instructor!</h1>
-                    <p>Always stay updated in your student portal.</p>
+                    <p>Always stay updated in your portal.</p>
                 </div>
                  <div class="welcome-image">
                     <img src="${profilePicture}" alt="Student Profile Picture">
                 </div>
             </div>
-         <div class="enrolled-courses">
-            <div class="enrolled-header">
-                <h3>Enrolled Courses</h3>
-            </div>
-            <div class="course-cards-container">
-                <div class="course-card">
-                    <div class="course-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <div class="course-content">
-                        <h4>Object-Oriented Programming</h4>
-                        <button class="view-button">View</button>
-                    </div>
-                </div>      
-                <div class="course-card">
-                    <div class="course-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <div class="course-content">
-                        <h4>Fundamentals of Database Systems</h4>
-                        <button class="view-button">View</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Daily Notice Section -->
         <div class="daily-notice">
             <div class="notice-header">
-                <h3>Daily Notice</h3>
-                <a href="#" class="see-all">See all</a>
-            </div>
-            <div class="notice-items">
+                <h3>University Updates</h3>
                 <div class="notice-item">
-                    <h4>Prelim payment due</h4>
-                    <p>Sorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="#">See more</a>
-                </div>
-                <div class="notice-item">
-                    <h4>Exam schedule</h4>
-                    <p>Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
-                    <a href="#">See more</a>
+                    <h4>Finals Week Exam</h4>
+                    <p>January 20 - 25, 2025</p>
                 </div>
             </div>
         </div>
@@ -71,7 +36,7 @@ const contentData = {
             <div class="syllabi-header">
                 <div class="search-container">
                     <input type="text" id="syllabi-search" placeholder="Search..." />
-                    <button id="syllabi-search-btn"><i class="material-icons">search</i></button>
+                    <button id="syllabi-search-btn" data-action="search"><i class="material-icons">search</i></button>
                     <div class="create-syllabus-btn-container">
                         <button id="create-syllabus-btn">Create Syllabus</button>
                     </div>       
@@ -514,6 +479,7 @@ function fetchData() {
                     deleteRow(id);
                 });
             });
+            attachSearchFunctionality();
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -701,4 +667,58 @@ function openInNewWindow(url) {
 
 function openInNewWindow(url) {
     window.open(url, "_blank", "width=800,height=600");
+}
+
+function attachSearchFunctionality() {
+    const searchInput = document.getElementById('syllabi-search');
+    const searchButton = document.getElementById('syllabi-search-btn');
+    const tableRows = document.querySelectorAll('#contentData tr');
+    const tbody = document.getElementById('contentData');
+
+    if (!searchButton || !searchInput) {
+        console.error("Search button or input field not found.");
+        return;
+    }
+
+    // Add event listener to the search button
+    searchButton.addEventListener('click', () => {
+        const query = searchInput.value.trim().toLowerCase();
+        let hasResults = false;
+
+        tableRows.forEach(row => {
+            const courseCode = row.cells[0].textContent.toLowerCase().trim();
+            const courseTitle = row.cells[1].textContent.toLowerCase().trim();
+            const semester = row.cells[2].textContent.toLowerCase().trim();
+            const academicYear = row.cells[3].textContent.toLowerCase().trim();
+            const program = row.cells[4]?.textContent.toLowerCase().trim(); // Normalize program field
+
+            if (
+                courseCode.includes(query) ||
+                courseTitle.includes(query) ||
+                semester.includes(query) ||
+                academicYear.includes(query) ||
+                (program && program.includes(query)) // Check program field
+            ) {
+                row.style.display = ''; // Show matching rows
+                hasResults = true;
+            } else {
+                row.style.display = 'none'; // Hide non-matching rows
+            }
+        });
+
+        // Show "No results found" if no rows match
+        if (!hasResults) {
+            if (!document.getElementById('no-results-message')) {
+                const noResultsRow = document.createElement('tr');
+                noResultsRow.id = 'no-results-message';
+                noResultsRow.innerHTML = `<td colspan="6" style="text-align: center;">No results found.</td>`;
+                tbody.appendChild(noResultsRow);
+            }
+        } else {
+            const noResultsMessage = document.getElementById('no-results-message');
+            if (noResultsMessage) {
+                noResultsMessage.remove();
+            }
+        }
+    });
 }

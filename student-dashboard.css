@@ -292,105 +292,10 @@ a {
     object-fit: cover; /* Ensures the image scales correctly */
 }
 
-/* Enrolled Courses Section */
-.enrolled-courses {
-    width: 100%;
-    max-width: 800px; /* Limit max width for better focus */
-    margin: 20px auto;
-    padding: 10px;
-    background: #fafafa; /* Light background for contrast */
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Enrolled Courses Section */
-.enrolled-courses {
-    flex: 2;
-}
-
-.enrolled-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.enrolled-header h3 {
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.enrolled-header .see-all {
-    font-size: 0.9em;
-    color: #6b46c1;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.course-cards-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.course-card {
-    background: linear-gradient(135deg, #64b96a, lightgreen);
-    border: 1px solid #e0d7fb;
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease-in-out;
-}
-
-.course-card:hover {
-    transform: translateY(-5px); /* Slight lift effect on hover */
-    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-}
-
-.course-icon {
-    background: #fff;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.course-icon i {
-    font-size: 30px;
-    color: lightgreen;
-}
-
-.course-content h4 {
-    font-size: 1em;
-    color: white;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.view-button {
-    background: white;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 20px;
-    font-size: 0.9em;
-    font-weight: bold;
-    cursor: pointer;
-}
-.view-button:hover {
-    background:lightblue;
-}
-
-
 /* Daily Notice Section */
 .daily-notice {
-    flex: 1;
+    align-self: flex-start; /* Align the section to the left */
+    width: 50%; /* Make it wider as needed */
     background: #fff;
     border-radius: 15px;
     padding: 20px;
